@@ -58,6 +58,7 @@ while(true)
 //   int id = Console.ReadLine();
 int id = Int32.Parse(Console.ReadLine());
   Console.Write("Enter Photo URL:");
+  // the photo url is data/300.jpg
   string photoUrl = Console.ReadLine();
   Employee currentEmployee = new Employee(firstName, lastName, id, photoUrl);
   employees.Add(currentEmployee);
@@ -94,6 +95,8 @@ static void Main(string[] args) {
 //   PrintEmployees(employees);
 Util.PrintEmployees(employees);
 Util.MakeCSV(employees);
+
+Util.MakeBadges(employees);
 }
 //       static void Main(string[] args)
 // {
