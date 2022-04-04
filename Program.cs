@@ -66,28 +66,34 @@ int id = Int32.Parse(Console.ReadLine());
   return employees;
 }
 
-static void PrintEmployees(List<Employee> employees)
-{
-//   for (int i = 0; i < employees.Count; i++) 
-//   {
 
-//     Console.WriteLine(employees[i]);
+// moved to utils
+// static void PrintEmployees(List<Employee> employees)
+// {
+// //   for (int i = 0; i < employees.Count; i++) 
+// //   {
 
-//   }
+// //     Console.WriteLine(employees[i]);
+
+// //   }
+// // for (int i = 0; i < employees.Count; i++) 
+// // {
+// //   // each item in employees is now an Employee instance
+// //   Console.WriteLine(employees[i].GetName());
+// // }
 // for (int i = 0; i < employees.Count; i++) 
 // {
-//   // each item in employees is now an Employee instance
-//   Console.WriteLine(employees[i].GetName());
+//   string template = "{0,-10}\t{1,-20}\t{2}";
+//   Console.WriteLine(String.Format(template, employees[i].GetId(), employees[i].GetName(), employees[i].GetPhotoUrl()));
 // }
-for (int i = 0; i < employees.Count; i++) 
-{
-  string template = "{0,-10}\t{1,-20}\t{2}";
-  Console.WriteLine(String.Format(template, employees[i].GetId(), employees[i].GetName(), employees[i].GetPhotoUrl()));
-}
-}
+// }
 static void Main(string[] args) {
   List<Employee> employees = GetEmployees();
-  PrintEmployees(employees);
+
+  // moved to utils
+//   PrintEmployees(employees);
+Util.PrintEmployees(employees);
+Util.MakeCSV(employees);
 }
 //       static void Main(string[] args)
 // {
