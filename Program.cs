@@ -36,36 +36,38 @@ namespace CatWorx.BadgeMaker
 
 // static void PrintEmployees(List<string> employees)
 // Change the type of the employees parameter
-static List<Employee> GetEmployees()
-{
-List<Employee> employees = new List<Employee>();
-while(true) 
-{
-  // Move the initial prompt inside the loop, so it repeats for each employee
-  Console.WriteLine("Enter first name (leave empty to exit): ");
 
-  // change input to firstName
-  string firstName = Console.ReadLine();
-  if (firstName == "") 
-  {
-    break;
-  }
+//moved to peoplefetcher
+// static List<Employee> GetEmployees()
+// {
+// List<Employee> employees = new List<Employee>();
+// while(true) 
+// {
+//   // Move the initial prompt inside the loop, so it repeats for each employee
+//   Console.WriteLine("Enter first name (leave empty to exit): ");
 
-  // add a Console.ReadLine() for each value
-  Console.Write("Enter last name: ");
-  string lastName = Console.ReadLine();
-  Console.Write("Enter ID: ");
-//   int id = Console.ReadLine();
-int id = Int32.Parse(Console.ReadLine());
-  Console.Write("Enter Photo URL:");
-  // the photo url is data/300.jpg
-  string photoUrl = Console.ReadLine();
-  Employee currentEmployee = new Employee(firstName, lastName, id, photoUrl);
-  employees.Add(currentEmployee);
-  }
+//   // change input to firstName
+//   string firstName = Console.ReadLine();
+//   if (firstName == "") 
+//   {
+//     break;
+//   }
 
-  return employees;
-}
+//   // add a Console.ReadLine() for each value
+//   Console.Write("Enter last name: ");
+//   string lastName = Console.ReadLine();
+//   Console.Write("Enter ID: ");
+// //   int id = Console.ReadLine();
+// int id = Int32.Parse(Console.ReadLine());
+//   Console.Write("Enter Photo URL:");
+//   // the photo url is data/300.jpg
+//   string photoUrl = Console.ReadLine();
+//   Employee currentEmployee = new Employee(firstName, lastName, id, photoUrl);
+//   employees.Add(currentEmployee);
+//   }
+
+//   return employees;
+// }
 
 
 // moved to utils
@@ -89,14 +91,36 @@ int id = Int32.Parse(Console.ReadLine());
 // }
 // }
 static void Main(string[] args) {
-  List<Employee> employees = GetEmployees();
+// //   List<Employee> employees = PeopleFetcher.GetEmployees();
+//   List<Employee> employees = PeopleFetcher.GetFromApi();
+// // employees = PeopleFetcher.GetEmployees();
 
-  // moved to utils
-//   PrintEmployees(employees);
-Util.PrintEmployees(employees);
-Util.MakeCSV(employees);
+//   // moved to utils
+// //   PrintEmployees(employees);
+// Util.PrintEmployees(employees);
+// Util.MakeCSV(employees);
 
-Util.MakeBadges(employees);
+// Util.MakeBadges(employees);
+  List<Employee> employees;
+            Console.WriteLine("Would you like to enter employee information? (y/n): ");
+            string response1 = Console.ReadLine();
+            if (response1 == "y")
+            {
+                employees = PeopleFetcher.GetEmployees();
+                Util.PrintEmployees(employees);
+                Util.MakeCSV(employees);
+                Util.MakeBadges(employees);
+            }
+
+            Console.WriteLine("Would you like to fetch employee data from the API? (y/n): ");
+            string response2 = Console.ReadLine();
+            if (response2 == "y")
+            {
+                employees = PeopleFetcher.GetFromApi();
+                Util.PrintEmployees(employees);
+                Util.MakeCSV(employees);
+                Util.MakeBadges(employees);
+            }
 }
 //       static void Main(string[] args)
 // {
